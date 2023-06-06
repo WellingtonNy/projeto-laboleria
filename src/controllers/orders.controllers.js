@@ -34,6 +34,8 @@ export async function getOrders(req, res) {
     try {
 
         const dados = await getOrder(date)
+        
+        if(!dados.rowCount) return res.status(404).send([])
 
         const respostaTratada = dados.rows.map((e) => {
 

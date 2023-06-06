@@ -16,14 +16,29 @@ export function postOrder(clientId, cakeId, quantity, totalPrice) {
 }
 
 
-export function getOrder(date){
-    
-     return db.query(`SELECT  orders.id, orders.clientId ,orders.cakeId,orders.quantity, TO_CHAR(orders.createdAt, 'YYYY-MM-DD HH24:MI') AS tempo ,orders.totalPrice,clients.name AS "clientName"
-     , clients.address ,clients.phone, cakes.name AS "cakeName",cakes.price, cakes.image , cakes.description
-     
-     FROM orders
-     JOIN
-       clients ON orders.clientId = clients.id
-     JOIN
-       cakes ON orders.cakeId = cakes.id;`)
+export function getOrder(date) {
+
+    let query = `SELECT  orders.id, orders.clientId ,orders.cakeId,orders.quantity, TO_CHAR(orders.createdAt, 'YYYY-MM-DD HH24:MI') AS tempo ,orders.totalPrice,clients.name AS "clientName"
+    , clients.address ,clients.phone, cakes.name AS "cakeName",cakes.price, cakes.image , cakes.description
+    FROM orders
+    JOIN
+      clients ON orders.clientId = clients.id
+    JOIN
+      cakes ON orders.cakeId = cakes.id
+    WHERE 1=1`
+
+    let queryComplementar = `;`
+
+    const valor = [];
+
+    if (date) {
+
+        valor.push(date)
+
+        queryComplementar = `AND TO_CHAR(orders.createdAt, 'YYYY-MM-DD') = $${valor.length};`
+
+    }
+
+
+    return db.query(query + queryComplementar, valor)
 }
