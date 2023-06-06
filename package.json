@@ -1,0 +1,33 @@
+{
+  "name": "projeto-laboleria",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+  "start": "node ./src/app.js",
+  "dev": "nodemon ./src/app.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WellingtonNy/projeto-laboleria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WellingtonNy/projeto-laboleria/issues"
+  },
+  "homepage": "https://github.com/WellingtonNy/projeto-laboleria#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
