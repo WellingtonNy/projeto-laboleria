@@ -40,7 +40,7 @@ export async function getOrders(req, res) {
         const respostaTratada = dados.rows.map((e) => {
 
             return (
-                [
+                
                     {
                         "client": {
                             "id": e.clientid,
@@ -60,7 +60,7 @@ export async function getOrders(req, res) {
                         "quantity": e.quantity,
                         "totalPrice": +e.totalprice
                     }
-                ])
+                )
         })
 
         res.send(respostaTratada)
